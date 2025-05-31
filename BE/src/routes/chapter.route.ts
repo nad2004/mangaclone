@@ -10,4 +10,7 @@ chapterRoutes.post('/', chapterController.createOne);
 chapterRoutes.put('/:id', chapterController.updateOne);
 chapterRoutes.delete('/:id', chapterController.deleteOne);
 chapterRoutes.get('/story/:storyId', chapterController.getChaptersByStoryId);
+chapterRoutes.get('/story/:storyId/chapter/:chapterNumber', chapterController.getChapterDetailByNumber);
+chapterRoutes.get('/story/:storyId/last', chapterController.getLastChapterByStoryId);
+chapterRoutes.get('/story/:storyId/first', chapterController.getFirstChapterByStoryId);
 export default chapterRoutes;

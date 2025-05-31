@@ -5,6 +5,6 @@ export const getChaptersByStoryId = async (storyId: string): Promise<IChapter[]>
   if (!mongoose.Types.ObjectId.isValid(storyId)) {
     throw new Error('ID không hợp lệ');
   }
-  const chapters = await Chapter.find( { story_id: storyId } ).sort({ createdAt: 1 }); // sort optional
+  const chapters = await Chapter.find( { story_id: storyId } ).sort({ chapter_number: -1 }); // sort optional
   return chapters;
 };

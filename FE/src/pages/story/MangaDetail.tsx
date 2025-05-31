@@ -71,7 +71,7 @@ export default function MangaDetail() {
           {chapters.map((chapter) => (
             <li key={chapter._id}>
               <div onClick={() => {
-                navigate(`/manga/${storyId}/${chapter._id}`)
+                navigate(`/manga/${storyId}/${chapter.chapter_number}`);
               }} className="block p-2 border rounded hover:bg-gray-100 dark:hover:bg-gray-800">
                 chapter {chapter.chapter_number} 
               </div>
