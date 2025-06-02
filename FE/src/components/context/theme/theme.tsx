@@ -25,4 +25,5 @@ export const darkTheme = createTheme({
       primary: '#ffffff', // tương đương text-white
     }
   },
+  
 });

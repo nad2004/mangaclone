@@ -9,7 +9,7 @@ export function generateAccessToken(payload: object): string {
 }
 
 export function generateRefreshToken(payload: object): string {
-  return jwt.sign(payload, SECRET_KEY, { expiresIn: '7d' });
+  return jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' });
 }
 export function setTokenCookie(res: Response, token: string) {
   res.cookie('token', token, {

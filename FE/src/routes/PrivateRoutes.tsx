@@ -1,22 +1,13 @@
-   // src/routes/PrivateRoutes.tsx
-   import React from 'react';
-   import { Route, Routes, Navigate } from 'react-router-dom';
-//    import Dashboard from '../pages/Dashboard';
 
+  import { Route} from 'react-router-dom';
+  import MangaPage from "@/pages/admin/MangaPage";
+  import UserPage from '@/pages/admin/UserPage';
    const isAuthenticated = () => {
      // Replace with your authentication logic
      return !!localStorage.getItem('authToken');
    };
-
-   const PrivateRoutes = () => {
-     return (
-       <Routes>
-         {/* <Route
-           path="/dashboard"
-           element={isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />}
-         /> */}
-       </Routes>
-     );
-   };
-
-   export default PrivateRoutes;
+   const privateRoutes = [
+      <Route path="manga" element={<MangaPage />} />,
+      <Route path="users" element={<UserPage />} />
+    ];
+export default privateRoutes;

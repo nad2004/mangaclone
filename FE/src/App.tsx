@@ -8,6 +8,8 @@ import publicRoutes from './routes/PublicRoutes';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import { Switch, FormControlLabel } from '@mui/material';
+import privateRoutes from './routes/PrivateRoutes';
+import AdminLayout from "@/components/layouts/AdminLayout";
 const AppContent: React.FC = () => {
   const { mode, toggleTheme } = useThemeMode();
 
@@ -39,10 +41,16 @@ const AppContent: React.FC = () => {
 
         <Router>
           <Routes>
+            <Route path="/admin/*" element={ <AdminLayout>
+              <Routes>
+                {privateRoutes.map((route) => route)}
+              </Routes>
+            </AdminLayout>}></Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<Layout />}>{publicRoutes}</Route>
           </Routes>
+
         </Router>
       </Box>
     </ThemeProvider>
