@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import useFetchAll from "@/components/hooks/useFetchAll";
 import type { IUser } from "@/types/user";
-
+import { useNavigate } from "react-router-dom";
 
 export default function UserPage() {
+const navigate = useNavigate();
 const { data: usersData, isLoading, isError, error } = useFetchAll("/users");
   const [users, setUsers] = useState<IUser[]>([]);
   const handleEdit = (user: IUser) => {
-    // console.log("Edit user", user);
+    navigate(`/admin/users/edit/${user._id}`, { state: { user } });
   };
 
   const handleDelete = (userId: number) => {
@@ -40,7 +41,7 @@ const { data: usersData, isLoading, isError, error } = useFetchAll("/users");
             {users.map((user) => (
               <tr
                 key={user._id}
-                className="border-b border-gray-200 dark:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-500"
+                className="border-b border-gray-200 dark:border-gray-500 "
               >
                 <td className="px-4 py-3">{user._id}</td>
                 <td className="px-4 py-3">{user.username}</td>
@@ -58,7 +59,7 @@ const { data: usersData, isLoading, isError, error } = useFetchAll("/users");
                 </td>
                 <td className="px-4 py-3 text-center space-x-2">
                   <button
-                    // onClick={() => handleEdit(user._id)}
+                    onClick={() => handleEdit(user)}
                     className="text-blue-600 hover:underline"
                   >
                     Sửa
